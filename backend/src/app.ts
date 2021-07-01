@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import apiRoutes from './routes';
 import './config';
 
+
 // initializations
 const app: Express = express();
 
