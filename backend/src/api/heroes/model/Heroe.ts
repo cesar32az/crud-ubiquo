@@ -2,11 +2,6 @@ import { Schema, model } from 'mongoose';
 
 const heroInformationSchema = new Schema(
   {
-    hero_id: {
-      type: Number,
-      unique: true,
-      required: true,
-    },
     name: {
       type: String,
       required: true,
@@ -44,5 +39,6 @@ const heroInformationSchema = new Schema(
     collection: 'hero_information',
   },
 );
+
 
 export default model('hero_information', heroInformationSchema);

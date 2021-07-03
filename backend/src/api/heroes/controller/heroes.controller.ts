@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { IHero } from '../interface/heroe.interface';
 import Heroe from '../model/Heroe';
 
 export const getAllHeroes = async (req: Request, res: Response) => {
@@ -26,6 +27,7 @@ export const getOneHeroe = async (req: Request, res: Response) => {
 
 export const createHeroe = async (req: Request, res: Response) => {
   try {
+
   } catch (error) {
     console.log(error);
   }
