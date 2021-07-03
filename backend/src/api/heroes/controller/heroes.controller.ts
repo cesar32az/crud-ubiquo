@@ -33,6 +33,12 @@ export const createHeroe = async (req: Request, res: Response) => {
 
 export const deleteHeroe = async (req: Request, res: Response) => {
   try {
+    const id = req.params.id;
+    const heroe = await Heroe.findByIdAndDelete(id);
+
+    if (!heroe) return res.status(400).json({ message: 'Heroe no encontrado' });
+
+    return res.json({ message: 'Heroe eliminado con éxito', heroe_id: id });
   } catch (error) {
     console.log(error);
   }
