@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
-
-export const getAllHeroes = (req: Request, res: Response) => {
+import Heroe from '../model/Heroe';
+export const getAllHeroes = async (req: Request, res: Response) => {
   try {
-    res.json({ message: 'all heroes' });
+    const heroes = await Heroe.find();
+
+    return res.json({ message: 'Heroes encontrados', heroes });
   } catch (error) {
     console.log(error);
   }
