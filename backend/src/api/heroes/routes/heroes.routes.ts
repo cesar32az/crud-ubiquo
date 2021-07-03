@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { getAllHeroes } from '../controller/heroes.controller';
+import { getAllHeroes, getOneHeroe } from '../controller/heroes.controller';
 
 const router = Router();
 
-router.get('/', getAllHeroes);
+router.get('/:id', getOneHeroe).get('/', getAllHeroes);
 
 export default router;
