@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getGender } from '../controller/alignment.controller';
+import { getGender } from '../controller/gender.controller';
 
 const router = Router();
 

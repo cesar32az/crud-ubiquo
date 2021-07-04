@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
+import { IPublisher } from '../interface/publisher.interface';
 
-const publisherSchema = new Schema(
+export const publisherSchema = new Schema(
   {
     publisher_id: {
       type: Number,
@@ -19,4 +20,4 @@ const publisherSchema = new Schema(
   },
 );
 
-export default model('publisher', publisherSchema);
+export default model<IPublisher>('Publisher', publisherSchema);

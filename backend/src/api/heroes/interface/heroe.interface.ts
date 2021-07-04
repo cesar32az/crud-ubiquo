@@ -1,4 +1,6 @@
-export interface IHero {
+import { Schema } from "mongoose";
+export interface IHeroe extends Schema{
+  _id?: string;
   hero_id?: number;
   name: string;
   eye_color: string;
@@ -7,7 +9,7 @@ export interface IHero {
   height: number;
   weight: number;
   race: string;
-  publisher_id?: number;
-  gender_id?: number;
-  alignment_id?: number;
+  publisher_id:any;
+  gender_id: any;
+  alignment_id: any;
 }

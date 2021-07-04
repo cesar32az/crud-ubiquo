@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getPublisher } from '../controller/alignment.controller';
+import { getPublisher } from '../controller/publisher.controller';
 
 const router = Router();
 

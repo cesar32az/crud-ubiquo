@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
+import { IAlignment } from '../interface/alignment.interface';
 
-const alignmentSchema = new Schema(
+export const alignmentSchema = new Schema(
   {
     name: {
       type: String,
@@ -16,8 +17,7 @@ const alignmentSchema = new Schema(
   {
     versionKey: false,
     collection: 'alignment',
-
   },
 );
 
-export default model('alignment', alignmentSchema);
+export default model<IAlignment>('Alignment', alignmentSchema);

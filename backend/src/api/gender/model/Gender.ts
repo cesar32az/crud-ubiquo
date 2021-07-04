@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
+import { IGender } from '../interface/gender.interface';
 
-const genderSchema = new Schema(
+export const genderSchema = new Schema(
   {
     name: {
       type: String,
@@ -19,4 +20,4 @@ const genderSchema = new Schema(
   },
 );
 
-export default model('gender', genderSchema);
+export default model<IGender>('Gender', genderSchema);
