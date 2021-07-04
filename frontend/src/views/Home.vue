@@ -1,13 +1,13 @@
 <template>
-  <h1>home</h1>
+  <Home />
 </template>
 
 <script>
+import Home from '../components/home/Home.vue';
 export default {
-
-}
+  name: 'HomeView',
+  components: { Home },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
