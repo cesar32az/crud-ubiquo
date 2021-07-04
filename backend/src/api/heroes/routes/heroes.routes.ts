@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { updateHeroe } from '../controller/heroes.controller';
 import {
   createHeroe,
   deleteHeroe,
@@ -12,6 +13,7 @@ router
   .get('/:id', getOneHeroe)
   .get('/', getAllHeroes)
   .post('/', createHeroe)
-  .delete('/:id', deleteHeroe);
+  .delete('/:id', deleteHeroe)
+  .put('/:id', updateHeroe);
 
 export default router;

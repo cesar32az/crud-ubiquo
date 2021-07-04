@@ -73,3 +73,17 @@ export const deleteHeroe = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
+
+export const updateHeroe = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const heroe: IHeroe = req.body;
+    const updatedHeroe = await Heroe.findByIdAndUpdate(id, heroe, { new: true });
+
+    if (!updatedHeroe) return res.status(400).json({ message: 'Héroe no encontrado' });
+
+    return res.json({ message: 'Héroe actualizado con éxito', updatedHeroe});
+  } catch (error) {
+    console.log(error);
+  }
+};
