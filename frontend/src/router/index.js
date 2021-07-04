@@ -14,7 +14,7 @@ const routes = [
     path: "/crud",
     name: "Crud",
     component: () =>
-      import(/* webpackChunkName: "crud" */ "../views/Crud.vue"),
+      import(/* webpackChunkName: "crud" */ "../views/CrudHeroes.vue"),
   },
 ];
 
