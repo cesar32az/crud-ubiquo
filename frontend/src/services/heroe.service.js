@@ -33,8 +33,11 @@ export class HeroeService {
     }
   }
 
-  async updateHeroe() {
+  async updateHeroe(heroe) {
     try {
+      const response = await axios.put(`${API_URL}/heroes/${heroe._id}`, heroe);
+      const message = response.data.message;
+      return message
     } catch (error) {
       console.log(error);
     }

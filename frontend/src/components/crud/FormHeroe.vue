@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" max-width="50rem">
+  <v-dialog v-model="dialog" max-width="50rem" persistent>
     <v-card>
       <v-card-title>
         <span class="headline">{{ dialogType == 'add' ? 'Agregar héroe' : 'Editar héroe' }}</span>
@@ -52,7 +52,9 @@
         <v-spacer></v-spacer>
         <v-btn color="red darken-1" text @click="closeDialog">Cancelar</v-btn>
         <v-btn v-if="dialogType == 'add'" color="blue" text @click="addHeroe">Guardar</v-btn>
-        <v-btn v-if="dialogType == 'edit'" color="teal accent-3" text>Guardar</v-btn>
+        <v-btn v-if="dialogType == 'edit'" color="teal accent-3" text @click="editHeroe"
+          >Guardar</v-btn
+        >
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -85,6 +87,20 @@ export default {
       closeDialog: 'closeDialog',
       getHeroes: 'getHeroes',
     }),
+    addHeroe() {
+      this.createHeroe(this.heroe);
+      this.heroe = {};
+      setTimeout(() => {
+        this.getHeroes();
+      }, 500);
+    },
+    editHeroe() {
+      this.updateHeroe(this.heroe);
+      this.heroe = {};
+      setTimeout(() => {
+        this.getHeroes();
+      }, 500);
+    },
     async getInfoSelect() {
       const { alignment, publisher, gender } = await HeroeService.getInfoHeroes();
       this.alignment = alignment.map(item => {
@@ -108,10 +124,6 @@ export default {
         };
         return newItem;
       });
-    },
-    addHeroe() {
-      this.createHeroe(this.heroe);
-      this.heroe = {};
     },
   },
   mounted() {

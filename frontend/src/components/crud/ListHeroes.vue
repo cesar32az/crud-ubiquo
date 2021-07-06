@@ -73,7 +73,7 @@ export default {
     ...mapActions({
       getHeroes: 'getHeroes',
       deleteHeroe: 'deleteHeroe',
-      openEditDialog: 'openEditDialog'
+      openEditDialog: 'openEditDialog',
     }),
     delHeroe(heroe) {
       confirm('¿Estás seguro de eliminar a este héroe?') && this.deleteHeroe(heroe);
@@ -82,9 +82,7 @@ export default {
   mounted() {
     this.getHeroes();
   },
-  updated() {
-    
-  },
+  updated() {},
 };
 </script>
 

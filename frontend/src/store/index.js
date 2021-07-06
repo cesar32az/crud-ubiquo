@@ -25,6 +25,7 @@ export default new Vuex.Store({
   actions: {
     async getHeroes({ commit }) {
       const heroes = await HeroeService.getAllHeroes();
+      console.log(heroes)
       commit('allHeroes', heroes);
     },
     async deleteHeroe({ commit }, heroe) {
@@ -36,8 +37,7 @@ export default new Vuex.Store({
       commit('createHeroe', heroe);
     },
     async updateHeroe({ commit }, heroe) {
-      //const message = await HeroeService.updateHeroe(heroe)
-      console.log('heroe editado', heroe);
+      const message = await HeroeService.updateHeroe(heroe)
       commit('updateHeroe', heroe);
     },
     openAddDialog({ commit }) {
@@ -66,6 +66,7 @@ export default new Vuex.Store({
         if (heroe._id == updatedHeroe._id) return updatedHeroe;
         return heroe;
       });
+      state.heroe = {}
       state.dialog = false;
       state.dialogType = '';
     },
