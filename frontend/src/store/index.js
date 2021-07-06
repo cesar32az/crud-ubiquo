@@ -13,10 +13,17 @@ export default new Vuex.Store({
       const heroes = await HeroeService.getAllHeroes();
       commit('allHeroes', heroes);
     },
+    async deleteHeroe({ commit }, heroe) {
+      const message = await HeroeService.deleteHeroe(heroe._id);
+      commit('deleteHeroe', heroe._id);
+    },
   },
   mutations: {
     allHeroes(state, heroes) {
       state.heroes = heroes;
+    },
+    deleteHeroe(state, id) {
+      state.heroes = state.heroes.filter(heroe => heroe._id != id);
     },
   },
   modules: {},

@@ -13,6 +13,16 @@ export class HeroeService {
     }
   }
 
+  async deleteHeroe(id) {
+    try {
+      const response = await axios.delete(`${API_URL}/heroes/${id}`);
+      const message = response.data.message;
+      return message;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async getOneHeroe() {
     try {
     } catch (error) {
@@ -28,12 +38,6 @@ export class HeroeService {
   }
 
   async updateHeroe() {
-    try {
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  deleteHeroe() {
     try {
     } catch (error) {
       console.log(error);

@@ -35,7 +35,7 @@
       <v-icon color="primary" class="mr-2" @click="editItem(item)">
         mdi-pencil
       </v-icon>
-      <v-icon color="error" @click="deleteItem(item)"> mdi-delete </v-icon>
+      <v-icon color="error" @click="delHeroe(item)"> mdi-delete </v-icon>
     </template>
     <!-- No data -->
     <template v-slot:no-data>No hay ningún héroe</template>
@@ -72,7 +72,11 @@ export default {
   methods: {
     ...mapActions({
       getHeroes: 'getHeroes',
+      deleteHeroe: 'deleteHeroe',
     }),
+    delHeroe(heroe){
+      this.deleteHeroe(heroe)
+    }
   },
   mounted() {
     this.getHeroes();
