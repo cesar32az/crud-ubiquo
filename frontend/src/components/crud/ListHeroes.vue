@@ -32,7 +32,7 @@
     </template>
     <!-- Actions -->
     <template v-slot:item.actions="{ item }">
-      <v-icon color="primary" class="mr-2" @click="editItem(item)">
+      <v-icon color="primary" class="mr-2" @click="openEditDialog(item)">
         mdi-pencil
       </v-icon>
       <v-icon color="error" @click="delHeroe(item)"> mdi-delete </v-icon>
@@ -73,13 +73,17 @@ export default {
     ...mapActions({
       getHeroes: 'getHeroes',
       deleteHeroe: 'deleteHeroe',
+      openEditDialog: 'openEditDialog'
     }),
-    delHeroe(heroe){
-      this.deleteHeroe(heroe)
-    }
+    delHeroe(heroe) {
+      confirm('¿Estás seguro de eliminar a este héroe?') && this.deleteHeroe(heroe);
+    },
   },
   mounted() {
     this.getHeroes();
+  },
+  updated() {
+    
   },
 };
 </script>

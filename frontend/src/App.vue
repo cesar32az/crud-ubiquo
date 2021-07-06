@@ -9,24 +9,16 @@
 </template>
 
 <script>
-import Footer from "./components/layout/Footer.vue";
-import Header from "./components/layout/Header.vue";
-import axios from 'axios'
+import Footer from './components/layout/Footer.vue';
+import Header from './components/layout/Header.vue';
 export default {
   components: { Header, Footer },
-  name: "App",
+  name: 'App',
 
   data: () => ({
     //
   }),
-  methods: {
-    async getData(){
-      const response = await axios.get('http://localhost:4000/api/alignment')
-      console.log(response)
-    }
-  },
-  mounted() {
-    this.getData()
-  }
+  methods: {},
+  mounted() {},
 };
 </script>

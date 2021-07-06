@@ -40,7 +40,8 @@ export const getOneHeroe = async (req: Request, res: Response) => {
 export const createHeroe = async (req: Request, res: Response) => {
   try {
     let heroe: IHeroe = req.body;
-
+    let random_id = Math.trunc(Math.random() * (10000 - 1000) + 1000);
+    heroe.hero_id = random_id;
     // search alignment
     const alignment = await Alignment.find({ alignment_id: heroe.alignment_id });
     // search gender
@@ -82,7 +83,7 @@ export const updateHeroe = async (req: Request, res: Response) => {
 
     if (!updatedHeroe) return res.status(400).json({ message: 'Héroe no encontrado' });
 
-    return res.json({ message: 'Héroe actualizado con éxito', updatedHeroe});
+    return res.json({ message: 'Héroe actualizado con éxito', updatedHeroe });
   } catch (error) {
     console.log(error);
   }

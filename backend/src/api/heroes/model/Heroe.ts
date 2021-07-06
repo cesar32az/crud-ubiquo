@@ -5,7 +5,6 @@ const heroInformationSchema = new Schema(
   {
     hero_id: {
       type: Number,
-      unique: true,
     },
     name: {
       type: String,

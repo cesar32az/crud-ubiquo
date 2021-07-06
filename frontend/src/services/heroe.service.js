@@ -23,15 +23,11 @@ export class HeroeService {
     }
   }
 
-  async getOneHeroe() {
+  async createHeroe(heroe) {
     try {
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async createHeroe() {
-    try {
+      const response = await axios.post(`${API_URL}/heroes`, heroe);
+      const message = response.data.message;
+      return message;
     } catch (error) {
       console.log(error);
     }
@@ -39,6 +35,30 @@ export class HeroeService {
 
   async updateHeroe() {
     try {
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getInfoHeroes() {
+    try {
+      const alignment = JSON.parse(localStorage.getItem('alignment'));
+      const publisher = JSON.parse(localStorage.getItem('publisher'));
+      const gender = JSON.parse(localStorage.getItem('gender'));
+      if (!alignment || !publisher || !gender) {
+        const alignmentResponse = await axios.get(`${API_URL}/alignment`);
+        const alignment = alignmentResponse.data.alignment;
+        const publisherResponse = await axios.get(`${API_URL}/publisher`);
+        const publisher = publisherResponse.data.publisher;
+        const genderResponse = await axios.get(`${API_URL}/gender`);
+        const gender = genderResponse.data.gender;
+        localStorage.setItem('alignment', JSON.stringify(alignment));
+        localStorage.setItem('gender', JSON.stringify(gender));
+        localStorage.setItem('publisher', JSON.stringify(publisher));
+        return { alignment, gender, publisher };
+      }
+
+      return { alignment, gender, publisher };
     } catch (error) {
       console.log(error);
     }
