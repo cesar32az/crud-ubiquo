@@ -2,7 +2,7 @@
   <div v-if="alignment">
     <v-tooltip top color="blue">
       <template v-slot:activator="{ on, attrs }">
-        <v-icon color="yellow" v-bind="attrs" v-on="on" v-if="alignment=='good'">
+        <v-icon color="yellow darken-3" v-bind="attrs" v-on="on" v-if="alignment=='good'">
           mdi-emoticon-happy-outline
         </v-icon>
         <v-icon color="error" v-bind="attrs" v-on="on" v-else-if="alignment=='bad'">
