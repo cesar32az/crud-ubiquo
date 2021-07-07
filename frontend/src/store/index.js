@@ -26,7 +26,6 @@ export default new Vuex.Store({
   actions: {
     async getHeroes({ commit }) {
       const heroes = await HeroeService.getAllHeroes();
-      console.log(heroes);
       commit('allHeroes', heroes);
     },
     async deleteHeroe({ commit }, heroe) {

@@ -27,8 +27,11 @@
     <template v-slot:item.gender="{ item }">
       {{ item.genderInfo.name }}
     </template>
-    <template v-slot:item.alignment="{ item }">
-      {{ item.alignmentInfo.name }}
+    <template v-slot:item.alignmentInfo.name="{ item }">
+      <Emoticon :alignment="item.alignmentInfo.name" v-if="item.alignmentInfo" />
+      <v-icon color="white" v-else>
+        mdi-circle-outline
+      </v-icon>
     </template>
     <!-- Actions -->
     <template v-slot:item.actions="{ item }">
@@ -44,8 +47,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import Emoticon from './Emoticon.vue';
 
 export default {
+  components: { Emoticon },
   name: 'List',
   data() {
     return {

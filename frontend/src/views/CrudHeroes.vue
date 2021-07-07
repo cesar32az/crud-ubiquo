@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row align="center" justify="center">
-      <v-col cols="12" md="8">
+      <v-col cols="12" md="12">
         <ListHeroes />
       </v-col>
     </v-row>

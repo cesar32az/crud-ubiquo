@@ -89,14 +89,12 @@ export default {
     }),
     addHeroe() {
       this.createHeroe(this.heroe);
-      this.heroe = {};
       setTimeout(() => {
         this.getHeroes();
       }, 500);
     },
     editHeroe() {
       this.updateHeroe(this.heroe);
-      this.heroe = {};
       setTimeout(() => {
         this.getHeroes();
       }, 500);
