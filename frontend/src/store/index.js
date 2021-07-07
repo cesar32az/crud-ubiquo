@@ -21,24 +21,28 @@ export default new Vuex.Store({
     },
     dialog: false,
     dialogType: '', // add or edit
+    snackbar: { message: null, show: false },
   },
   actions: {
     async getHeroes({ commit }) {
       const heroes = await HeroeService.getAllHeroes();
-      console.log(heroes)
+      console.log(heroes);
       commit('allHeroes', heroes);
     },
     async deleteHeroe({ commit }, heroe) {
       const message = await HeroeService.deleteHeroe(heroe._id);
       commit('deleteHeroe', heroe._id);
+      commit('successNotify', message);
     },
     async createHeroe({ commit }, heroe) {
-      const message = await HeroeService.createHeroe(heroe)
+      const message = await HeroeService.createHeroe(heroe);
       commit('createHeroe', heroe);
+      commit('successNotify', message);
     },
     async updateHeroe({ commit }, heroe) {
-      const message = await HeroeService.updateHeroe(heroe)
+      const message = await HeroeService.updateHeroe(heroe);
       commit('updateHeroe', heroe);
+      commit('successNotify', message);
     },
     openAddDialog({ commit }) {
       commit('addDialog');
@@ -66,23 +70,28 @@ export default new Vuex.Store({
         if (heroe._id == updatedHeroe._id) return updatedHeroe;
         return heroe;
       });
-      state.heroe = {}
+      state.heroe = {};
       state.dialog = false;
       state.dialogType = '';
     },
     addDialog(state) {
-      state.heroe = {}
+      state.heroe = {};
       state.dialog = true;
       state.dialogType = 'add';
     },
     editDialog(state, heroe) {
       state.dialog = true;
       state.dialogType = 'edit';
-      state.heroe = heroe
+      state.heroe = heroe;
     },
     closeDialog(state) {
       state.dialog = false;
       state.dialogType = '';
+    },
+    successNotify(state, message) {
+      state.snackbar.message = message;
+      state.snackbar.color = 'success';
+      state.snackbar.show = true;
     },
   },
   modules: {},
