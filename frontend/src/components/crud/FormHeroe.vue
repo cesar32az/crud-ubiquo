@@ -8,31 +8,69 @@
         <v-container>
           <v-row>
             <v-col cols="12" md="6">
-              <v-text-field v-model="heroe.name" autofocus label="Nombre"></v-text-field>
+              <v-text-field
+                v-model="heroe.name"
+                autofocus
+                label="Nombre"
+                :rules="[rules.required]"
+                validate-on-blur
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field v-model="heroe.eye_color" label="Color de ojos"></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-text-field v-model="heroe.hair_color" label="Color de cabello"></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field v-model="heroe.skin_color" label="Color de piel"></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-text-field v-model.number="heroe.height" label="Altura en cm."></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field v-model.number="heroe.weight" label="Peso"></v-text-field>
+              <v-text-field
+                v-model="heroe.eye_color"
+                label="Color de ojos"
+                :rules="[rules.required]"
+                validate-on-blur
+              ></v-text-field>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" md="6">
-              <v-text-field v-model="heroe.race" label="Raza"></v-text-field>
+              <v-text-field
+                v-model="heroe.hair_color"
+                label="Color de cabello"
+                :rules="[rules.required]"
+                validate-on-blur
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field
+                v-model="heroe.skin_color"
+                label="Color de piel"
+                :rules="[rules.required]"
+                validate-on-blur
+              ></v-text-field>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" md="6">
+              <v-text-field
+                v-model.number="heroe.height"
+                label="Altura"
+                suffix="cm."
+                :rules="[rules.required]"
+                validate-on-blur
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field
+                v-model.number="heroe.weight"
+                label="Peso"
+                suffix="lbs"
+                :rules="[rules.required]"
+                validate-on-blur
+              ></v-text-field>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" md="6">
+              <v-text-field
+                v-model="heroe.race"
+                label="Raza"
+                :rules="[rules.required]"
+                validate-on-blur
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
               <v-select v-model="heroe.publisher_id" :items="publisher" label="Casa publicadora" />
@@ -71,13 +109,16 @@ export default {
       alignment: [],
       publisher: [],
       gender: [],
+      rules: {
+        required: (value) => !!value || 'Campo requerido.',
+      },
     };
   },
   computed: {
     ...mapState({
-      dialog: state => state.dialog,
-      dialogType: state => state.dialogType,
-      heroe: state => state.heroe,
+      dialog: (state) => state.dialog,
+      dialogType: (state) => state.dialogType,
+      heroe: (state) => state.heroe,
     }),
   },
   methods: {
@@ -101,21 +142,21 @@ export default {
     },
     async getInfoSelect() {
       const { alignment, publisher, gender } = await HeroeService.getInfoHeroes();
-      this.alignment = alignment.map(item => {
+      this.alignment = alignment.map((item) => {
         const newItem = {
           text: item.name,
           value: item.alignment_id,
         };
         return newItem;
       });
-      this.publisher = publisher.map(item => {
+      this.publisher = publisher.map((item) => {
         const newItem = {
           text: item.publisher_name,
           value: item.publisher_id,
         };
         return newItem;
       });
-      this.gender = gender.map(item => {
+      this.gender = gender.map((item) => {
         const newItem = {
           text: item.name,
           value: item.gender_id,
