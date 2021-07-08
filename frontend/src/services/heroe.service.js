@@ -12,6 +12,7 @@ export class HeroeService {
       console.log(error);
       const message = error.response.data.message;
       return message
+
     }
   }
 
@@ -24,6 +25,7 @@ export class HeroeService {
       console.log(error);
       const message = error.response.data.message;
       return message
+
     }
   }
 
@@ -47,7 +49,7 @@ export class HeroeService {
     } catch (error) {
       console.log(error);
       const message = error.response.data.message;
-      return message
+
     }
   }
 
