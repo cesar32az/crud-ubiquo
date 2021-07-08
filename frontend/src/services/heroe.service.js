@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4000/api';
+const API_URL = 'http://18.188.109.11:4000/api';
 
 export class HeroeService {
   async getAllHeroes() {
