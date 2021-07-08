@@ -10,6 +10,8 @@ export class HeroeService {
       return heroes;
     } catch (error) {
       console.log(error);
+      const message = error.response.data.message;
+      return message
     }
   }
 
@@ -20,6 +22,8 @@ export class HeroeService {
       return message;
     } catch (error) {
       console.log(error);
+      const message = error.response.data.message;
+      return message
     }
   }
 
@@ -30,6 +34,8 @@ export class HeroeService {
       return message;
     } catch (error) {
       console.log(error);
+      const message = error.response.data.message;
+      return message
     }
   }
 
@@ -40,6 +46,8 @@ export class HeroeService {
       return message
     } catch (error) {
       console.log(error);
+      const message = error.response.data.message;
+      return message
     }
   }
 
