@@ -6,84 +6,104 @@
       </v-card-title>
       <v-card-text>
         <v-container>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-text-field
-                v-model="heroe.name"
-                autofocus
-                label="Nombre"
-                :rules="[rules.required]"
-                validate-on-blur
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field
-                v-model="heroe.eye_color"
-                label="Color de ojos"
-                :rules="[rules.required]"
-                validate-on-blur
-              ></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-text-field
-                v-model="heroe.hair_color"
-                label="Color de cabello"
-                :rules="[rules.required]"
-                validate-on-blur
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field
-                v-model="heroe.skin_color"
-                label="Color de piel"
-                :rules="[rules.required]"
-                validate-on-blur
-              ></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-text-field
-                v-model.number="heroe.height"
-                label="Altura"
-                suffix="cm."
-                :rules="[rules.required]"
-                validate-on-blur
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field
-                v-model.number="heroe.weight"
-                label="Peso"
-                suffix="lbs"
-                :rules="[rules.required]"
-                validate-on-blur
-              ></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-text-field
-                v-model="heroe.race"
-                label="Raza"
-                :rules="[rules.required]"
-                validate-on-blur
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-select v-model="heroe.publisher_id" :items="publisher" label="Casa publicadora" />
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-select v-model="heroe.gender_id" :items="gender" label="Género" />
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-select v-model="heroe.alignment_id" :items="alignment" label="Alineación" />
-            </v-col>
-          </v-row>
+          <v-form ref="form" v-model="valid" lazy-validation>
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="heroe.name"
+                  autofocus
+                  label="Nombre"
+                  :rules="[rules.required]"
+                  validate-on-blur
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="heroe.eye_color"
+                  label="Color de ojos"
+                  :rules="[rules.required]"
+                  validate-on-blur
+                ></v-text-field>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="heroe.hair_color"
+                  label="Color de cabello"
+                  :rules="[rules.required]"
+                  validate-on-blur
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="heroe.skin_color"
+                  label="Color de piel"
+                  :rules="[rules.required]"
+                  validate-on-blur
+                ></v-text-field>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model.number="heroe.height"
+                  label="Altura"
+                  suffix="cm."
+                  :rules="[rules.required]"
+                  validate-on-blur
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model.number="heroe.weight"
+                  label="Peso"
+                  suffix="lbs"
+                  :rules="[rules.required]"
+                  validate-on-blur
+                ></v-text-field>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="heroe.race"
+                  label="Raza"
+                  :rules="[rules.required]"
+                  validate-on-blur
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-select
+                  v-model="heroe.publisher_id"
+                  :items="publisher"
+                  label="Casa publicadora"
+                  :rules="[rules.required]"
+                  validate-on-blur
+                />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-select
+                  v-model="heroe.gender_id"
+                  :items="gender"
+                  label="Género"
+                  :rules="[rules.required]"
+                  validate-on-blur
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-select
+                  v-model="heroe.alignment_id"
+                  :items="alignment"
+                  label="Alineación"
+                  :rules="[rules.required]"
+                  validate-on-blur
+                />
+              </v-col>
+            </v-row>
+          </v-form>
         </v-container>
       </v-card-text>
       <v-card-actions>
@@ -112,6 +132,7 @@ export default {
       rules: {
         required: (value) => !!value || 'Campo requerido.',
       },
+      valid: true
     };
   },
   computed: {
@@ -129,6 +150,7 @@ export default {
       getHeroes: 'getHeroes',
     }),
     addHeroe() {
+      this.$refs.form.validate()
       this.createHeroe(this.heroe);
       setTimeout(() => {
         this.getHeroes();
