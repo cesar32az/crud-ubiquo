@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  backend:
+    container_name: backend-ubiquo
+    restart: always
+    build: ./backend
+    ports:
+      - 4000:4000
+    volumes:
+      - ./backend:/usr/src/app
+    env_file:
+      - ./.env.dev
+    networks:
+      - crud_ubiquo
+
+  frontend:
+    container_name: frontend-ubiquo
+    restart: always
+    build: ./frontend
+    ports:
+      - 8000:8080
+    volumes:
+      - ./frontend:/usr/src/app
+    depends_on:
+      - backend
+    networks:
+      - crud_ubiquo
+networks:
+  crud_ubiquo:
+    driver: bridge
